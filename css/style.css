@@ -323,7 +323,6 @@ form button:hover {
 @media (max-width: 768px) {
   /* Main container - padding for mobile */
   main {
-    min-height: auto;
     padding: 0;
     display: flex;
     align-items: stretch;
@@ -917,5 +916,361 @@ label.error-label {
 
   .success-section p {
     font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   STEP 8: INTERACTIVE STATES
+   Hover, Focus, Active, and Accessibility
+   ============================================ */
+
+/* ============================================
+   INPUT INTERACTIVE STATES
+   ============================================ */
+
+/* Email input - focus state */
+input[type="email"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--neutral-blue-800);
+  box-shadow: 0 0 0 3px rgba(52, 64, 84, 0.15);
+  background-color: rgba(52, 64, 84, 0.02);
+  transition: all 0.2s ease;
+}
+
+/* Email input - hover state */
+input[type="email"]:hover:not(:focus),
+input[type="text"]:hover:not(:focus) {
+  border-color: var(--neutral-grey);
+  background-color: rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+/* Email input - active state */
+input[type="email"]:active,
+input[type="text"]:active {
+  border-color: var(--neutral-blue-800);
+}
+
+/* Email input - placeholder styling */
+input::placeholder {
+  color: var(--neutral-grey);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder {
+  opacity: 0.4;
+}
+
+input:hover::placeholder {
+  opacity: 0.6;
+}
+
+/* ============================================
+   BUTTON INTERACTIVE STATES
+   ============================================ */
+
+/* Submit button - base state */
+form button {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Submit button - hover state */
+form button:hover:not(:disabled) {
+  background-color: var(--primary-red);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(252, 98, 87, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Submit button - active/pressed state */
+form button:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(252, 98, 87, 0.2);
+  transition: all 0.1s ease;
+}
+
+/* Submit button - focus state (keyboard) */
+form button:focus {
+  outline: 2px solid var(--neutral-blue-800);
+  outline-offset: 3px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Submit button - focus-visible (keyboard only) */
+form button:focus-visible {
+  outline: 2px solid var(--neutral-blue-800);
+  outline-offset: 3px;
+}
+
+/* Submit button - disabled state */
+form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button ripple effect background */
+form button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+}
+
+form button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ============================================
+   SUCCESS SECTION BUTTON STATES
+   ============================================ */
+
+/* Dismiss button - base state */
+.success-section button {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dismiss button - hover state */
+.success-section button:hover {
+  background-color: var(--primary-red);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(252, 98, 87, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dismiss button - active state */
+.success-section button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(252, 98, 87, 0.2);
+  transition: all 0.1s ease;
+}
+
+/* Dismiss button - focus state */
+.success-section button:focus {
+  outline: 2px solid var(--neutral-blue-800);
+  outline-offset: 3px;
+}
+
+/* Dismiss button - focus-visible */
+.success-section button:focus-visible {
+  outline: 2px solid var(--neutral-blue-800);
+  outline-offset: 3px;
+}
+
+/* Dismiss button ripple effect */
+.success-section button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+}
+
+.success-section button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ============================================
+   LABEL INTERACTIVE STATES
+   ============================================ */
+
+label {
+  transition: color 0.3s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Label hover effect */
+label:hover {
+  color: var(--neutral-blue-800);
+}
+
+/* Label focus-within (when associated input is focused) */
+form > div:has(input:focus) label {
+  color: var(--neutral-blue-800);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   FEATURES LIST INTERACTIVE STATES
+   ============================================ */
+
+/* Feature item hover effect */
+.features-list li {
+  transition: all 0.3s ease;
+  transform: translateX(0);
+  padding-left: 0;
+}
+
+.features-list li:hover {
+  transform: translateX(8px);
+  color: var(--neutral-blue-800);
+}
+
+/* Feature icon hover effect */
+.features-list img {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.features-list li:hover img {
+  transform: scale(1.15);
+}
+
+/* ============================================
+   SECTION INTERACTIVE STATES
+   ============================================ */
+
+/* Signup section hover effect (desktop) */
+@media (min-width: 769px) {
+  .signup-section {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+  }
+
+  .signup-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ============================================
+   SMOOTH SCROLLING & TRANSITIONS
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  form button:hover:not(:disabled) {
+    transform: none;
+    box-shadow: var(--shadow-md);
+  }
+
+  form button:active:not(:disabled) {
+    transform: none;
+  }
+
+  .success-section button:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+  }
+
+  .success-section button:active {
+    transform: none;
+  }
+
+  .features-list li:hover {
+    transform: none;
+  }
+
+  .features-list li:hover img {
+    transform: none;
+  }
+
+  @media (min-width: 769px) {
+    .signup-section:hover {
+      transform: none;
+    }
+  }
+}
+
+/* ============================================
+   KEYBOARD NAVIGATION ENHANCEMENTS
+   ============================================ */
+
+/* Focus visible - standard outline for keyboard users */
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* Remove focus styles for mouse users (pointer) */
+@media (pointer: fine) {
+  button:focus:not(:focus-visible),
+  input:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ============================================
+   CURSOR STATES
+   ============================================ */
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+label {
+  cursor: pointer;
+}
+
+input {
+  cursor: text;
+}
+
+/* ============================================
+   COLOR CONTRAST FOR INTERACTIVE STATES
+   ============================================ */
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  input:focus {
+    border-width: 2px;
+    box-shadow: 0 0 0 2px var(--neutral-white), 0 0 0 4px var(--neutral-blue-800);
+  }
+
+  form button:focus,
+  .success-section button:focus {
+    outline-width: 3px;
+  }
+}
+
+/* ============================================
+   DARK COLOR SCHEME SUPPORT (if applicable)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Keep light theme as per design spec */
+  body {
+    background-color: var(--neutral-white);
+    color: var(--neutral-blue-800);
   }
 }
