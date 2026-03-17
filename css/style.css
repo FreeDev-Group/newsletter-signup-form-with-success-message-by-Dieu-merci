@@ -315,3 +315,188 @@ form button:hover {
 .success-section button:hover {
   background-color: var(--primary-red);
 }
+
+/* ============================================
+   STEP 4: MOBILE RESPONSIVE LAYOUT (375px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Main container - padding for mobile */
+  main {
+    min-height: auto;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Signup section - stacked layout */
+  .signup-section {
+    flex-direction: column-reverse;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* Content area - full width on mobile */
+  .content {
+    padding: var(--spacing-lg);
+    flex: 0;
+  }
+
+  /* Illustration - full width at top */
+  .illustration {
+    min-height: 250px;
+    padding: var(--spacing-lg);
+    flex: 0;
+  }
+
+  /* Images - switch to mobile */
+  .desktop-img {
+    display: none;
+  }
+
+  .mobile-img {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Typography adjustments for mobile */
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    font-size: var(--font-size-body);
+  }
+
+  /* Features list - centered */
+  .features-list {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .features-list li {
+    justify-content: flex-start;
+    text-align: left;
+    gap: var(--spacing-md);
+  }
+
+  .features-list img {
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  /* Form - full width */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  form input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 16px;
+    min-height: 48px;
+  }
+
+  form button {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-height: 48px;
+    font-size: var(--font-size-body);
+    margin-top: 0;
+  }
+
+  /* Success section - mobile */
+  .success-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    text-align: center;
+    background-color: var(--neutral-white);
+  }
+
+  .success-section[hidden="false"],
+  .success-section:not([hidden]) {
+    display: flex;
+  }
+
+  .success-section img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .success-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .success-section p {
+    font-size: var(--font-size-body);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .success-section button {
+    width: 100%;
+    min-width: auto;
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-height: 48px;
+  }
+}
+
+/* Extra small devices (320px - 375px) */
+@media (max-width: 375px) {
+  .content {
+    padding: var(--spacing-md);
+  }
+
+  .illustration {
+    padding: var(--spacing-md);
+    min-height: 200px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .features-list li {
+    font-size: 0.95rem;
+  }
+}
